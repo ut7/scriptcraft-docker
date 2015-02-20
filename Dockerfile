@@ -6,8 +6,7 @@ RUN useradd -M -s /bin/false --uid 1000 minecraft \
   && mkdir /data \
   && mkdir -p /data/plugins \
   && mkdir -p /data/config/worlds/default \
-  && chown -Rh minecraft:minecraft /data \
-  && apt-get -y install wget
+  && chown -Rh minecraft:minecraft /data
 
 ADD src/start /data/start
 RUN chmod +x /data/start
@@ -15,8 +14,8 @@ RUN chmod +x /data/start
 USER minecraft
 WORKDIR /data
 
-ADD canarymod.jar /data/canarymod.jar
-ADD scriptcraft.jar /data/plugins/scriptcraft.jar
+ADD out/canarymod.jar canarymod.jar
+ADD out/scriptcraft.jar plugins/scriptcraft.jar
 ADD out/world.cfg config/worlds/default/default_NORMAL.cfg
 
 RUN cd /data; java -jar canarymod.jar noControl
