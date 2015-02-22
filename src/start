@@ -1,4 +1,5 @@
 #!/bin/bash
 
-cd /data; java -jar -Xmx1024M -Xms1024M /data/canarymod.jar noControl
+cd /data
+java -jar -Xmx1024M -Xms1024M /data/canarymod.jar noControl
 
